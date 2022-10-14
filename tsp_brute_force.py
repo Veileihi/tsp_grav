@@ -14,8 +14,21 @@ def total_distance(points):
 
 
 def travelling_salesman(points, start=None):
-    
+    co_ords = [body[1] for body in points.items()]
+
+
     # returns the minimum distance path that traverses all points in a cycle by brute force
     if start is None:
-        start = points[0]
-    return min([perm for perm in permutations(points) if perm[0] == start], key=total_distance)
+        start = co_ords[0]
+
+    shortest_root = min([perm for perm in permutations(co_ords) if perm[0] == start], key=total_distance)
+
+    final = []
+    body_only = []
+    for i in shortest_root:
+        for j in points.items():
+            if i == j[1]:
+                final.append(j)
+                body_only.append(j[0])
+
+    return final, body_only

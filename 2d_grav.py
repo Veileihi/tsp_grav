@@ -84,13 +84,13 @@ class Grav:
         return initial_co_ords, self.collisions, self.history
 
 initial_loc = [[1.0, 1.0], [7.0, 5.0], [4.9, 2.3], [8.0, 3.0], [9.0, 9.0]]      
-test = Grav(nbodies = 5, fieldstrength = 1, time_steps = 200, initial_loc = initial_loc)
-initial_co_ords, collision_freq, history = test.simulate()
+test = Grav(nbodies = 5, fieldstrength = 1, time_steps = 100, initial_loc = None)
+initial_coords, collision_freq, history = test.simulate()
 
 #plt.hist(collision_freq)
 #plt.show()
-
-tsp_result = tsp_brute_force.travelling_salesman(initial_loc)
-print()
+tsp_result, bodies_result = tsp_brute_force.travelling_salesman(initial_coords)
+print(bodies_result)
 print(collision_freq)
 # body0, body2, body3, body1, body4
+
